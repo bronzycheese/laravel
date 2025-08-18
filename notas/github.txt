@@ -1,0 +1,10 @@
+git remote -v
+
+git init
+git add .
+git commit -m "first commit"
+git push -u origin main
+**qnd alterar um novo código* p subir para o servidor vc vai usar
+git add .
+git commit -m "first commit"
+git push -u origin main
