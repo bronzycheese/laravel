@@ -1,0 +1,16 @@
+composer install
+php artisan migrate ****rodar bd
+php artisan migrate:refresh
+php artisan db:seed
+php artisan db:seed --class=UserSeeder
+php artisan serve
+php artisan serve --host=192.168.100.1 --port=8000
+
+php artisan make:model Admin/Enercon/Protocolo -m
+php artisan make:model Admin/Enercon/Usuario -m
+php artisan make:model Admin/Enercon/Cidade -m
+php artisan make:model Admin/Enercon/TipoProtocolo -m
+
+php artisan make:livewire Admin/Enercon/Usuario/UsuarioComponent
+php artisan make:livewire Admin/Enercon/Protocolo/ProtocoloComponent
+php artisan make:model Admin/Enercon/Servico -m
