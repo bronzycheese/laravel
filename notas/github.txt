@@ -8,3 +8,7 @@ git push -u origin main
 git add .
 git commit -m "first commit"
 git push -u origin main
+
+git branch
+git branch *******
+git switch *******
