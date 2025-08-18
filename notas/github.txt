@@ -10,5 +10,5 @@ git commit -m "first commit"
 git push -u origin main
 
 git branch
-git branch *******
-git switch *******
+git branch ******* (criar)
+git switch *******(trocar)
