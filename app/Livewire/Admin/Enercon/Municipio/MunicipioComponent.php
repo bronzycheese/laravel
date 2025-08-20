@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Enercon\Municipio;
+namespace App\Livewire\Admin\Enercon\Municipio;
 
 use Livewire\Component;
 use App\Models\Admin\Enercon\Obra\Municipio;
@@ -23,6 +23,7 @@ class MunicipioComponent extends Component
     public function carregarMunicipios()
     {
         $this->municipios = Municipio::all();
+
     }
 
     public function salvar()
