@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Models\Admin\Enercon\Municipio;
 
 use Livewire\Component;
-use App\Models\Municipio;
+use App\Models\Admin\Enercon\Municipio;
 
 class MunicipioComponent extends Component
 {
@@ -78,6 +78,6 @@ class MunicipioComponent extends Component
 
     public function render()
     {
-        return view('livewire.municipio-component');
+        return view('livewire.admin.enercon.municipio.municipio-component');
     }
 }
