@@ -40,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($municipios as $municipio)
+                                //@foreach($municipios as $municipio)
                                     <tr>
                                         <td>{{ $municipio->id }}</td>
                                         <td>{{ $municipio->nome }}</td>
@@ -52,7 +52,7 @@
                                         </td>
                                         <td>
                                             <button wire:click="view({{ $municipio->id }})" class="btn btn-info btn-sm">
-                                                <i class="fa fa-eye"></i>
+                                               <i class="fa fa-eye"></i>
                                             </button>
                                             <button wire:click="edit({{ $municipio->id }})" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
