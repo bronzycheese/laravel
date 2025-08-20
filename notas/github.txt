@@ -12,3 +12,13 @@ git push -u origin main
 git branch
 git branch ******* (criar)
 git switch *******(trocar)
+
+uns dos comando p trabalhar com a branch aqui que anoitei ontem: git branch -a
+git checkout -b wagner
+git push -u origin wagner
+
+git checkout main ou git switch main
+git pull origin main //Atualize a main (garante que está igual ao remoto)
+git merge wagner //Faça o merge da wagner dentro da main
+
+git merge main --no-edit
