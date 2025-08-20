@@ -3,7 +3,7 @@
 namespace App\Models\Admin\Enercon\Municipio;
 
 use Livewire\Component;
-use App\Models\Admin\Enercon\Municipio;
+use App\Models\Admin\Enercon\Obra\Municipio;
 
 class MunicipioComponent extends Component
 {
