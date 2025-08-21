@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
-    protected $fillable = ['municipio_id', 'nome', 'telefone', 'status'];
+    protected $fillable = ['empresa_id', 'nome', 'telefone', 'status'];
 
-    public function municipio()
+    public function empresa()
     {
-        return $this->belongsTo(Municipio::class);
+        return $this->belongsTo(Empresa::class);
     }
 }
 
@@ -19,10 +19,10 @@ return new class extends Migration {
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('municipio_id')->constrained('municipios')->onDelete('cascade');
+            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->string('nome');
             $table->string('telefone')->nullable();
-            $table->boolean('status')->default(true);
+            $table->integer('CEP');
             $table->timestamps();
         });
     }
