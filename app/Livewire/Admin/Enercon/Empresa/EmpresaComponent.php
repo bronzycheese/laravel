@@ -11,7 +11,7 @@ class EmpresaComponent extends Component
 {
      use WithPagination;
 
-    public $EmpresaId;
+    public $empresaId;
     public $nome;
     public $estado;
     public $status = 'ativa';
@@ -31,13 +31,10 @@ class EmpresaComponent extends Component
 
     public function render()
     {
-        $empresas = Empresa::where('nome', 'like', '%' . $this->search . '%')
-            ->orWhere('estado', 'like', '%' . $this->search . '%')
-            ->paginate(10);
+        $empresas = Empresa::paginate(10);
 
         return view('livewire.admin.enercon.empresa.empresa-component', compact('empresas'));
     }
-
     public function create()
     {
         $this->resetInputFields();
@@ -69,7 +66,7 @@ class EmpresaComponent extends Component
     {
         $this->validate();
 
-        Cidade::updateOrCreate(['id' => $this->empresaId], [
+        Empresa::updateOrCreate(['id' => $this->empresaId], [
             'nome' => $this->nome,
             'estado' => $this->estado,
             'status' => $this->status,

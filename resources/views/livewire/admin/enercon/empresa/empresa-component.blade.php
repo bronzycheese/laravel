@@ -130,8 +130,8 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">CEP</label>
-                                        <input type="text" class="form-control @error('cep') is-invalid @enderror"
-                                               wire:model="estado" {{ $isView ? 'readonly' : '' }}>
+                                        <input type="number" class="form-control @error('cep') is-invalid @enderror"
+                                               wire:model="cep" {{ $isView ? 'readonly' : '' }}>
                                         @error('cep') <span class="invalid-feedback">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
