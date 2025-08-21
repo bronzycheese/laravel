@@ -3,31 +3,21 @@
 namespace App\Models\Admin\Enercon\Obra;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Empresa extends Model
 {
-    protected $fillable = ['empresa_id', 'nome', 'telefone', 'status'];
+     use HasFactory;
 
-    public function empresa()
-    {
-        return $this->belongsTo(Empresa::class);
-    }
+    protected $fillable = [
+        'nome',
+        'estado',
+        'status',
+        'cep'
+    ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
 }
-
-return new class extends Migration {
-    public function up(): void
-    {
-        Schema::create('empresas', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
-            $table->string('nome');
-            $table->string('telefone')->nullable();
-            $table->integer('CEP');
-            $table->timestamps();
-        });
-    }
-    public function down(): void
-    {
-        Schema::dropIfExists('empresas');
-    }
-};

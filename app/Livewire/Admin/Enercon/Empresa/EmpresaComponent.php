@@ -4,81 +4,113 @@ namespace App\Livewire\Admin\Enercon\Empresa;
 
 use Livewire\Component;
 use App\Models\Admin\Enercon\Obra\Empresa;
+use Livewire\WithPagination;
+
 
 class EmpresaComponent extends Component
 {
-    public $empresas;
-    public $empresaId;
+     use WithPagination;
+
+    public $EmpresaId;
     public $nome;
-    public $telefone;
-    public $CEP;
+    public $estado;
+    public $status = 'ativa';
+    public $cep;
+    public $search = '';
+    public $isOpen = false;
+    public $isView = false;
 
-    public $modoEdicao = false;
+    protected $paginationTheme = 'bootstrap';
 
-    public function mount()
-    {
-        $this->carregarEmpresas();
-    }
-
-    public function carregarEmpresas()
-    {
-        $this->empresas = Empresas::all();
-
-    }
-
-    public function salvar()
-    {
-        $this->validate([
-            'nome' => 'required|string|max:255',
-            'telefone' => 'nullable|string|max:20',
-            'CEP' => 'required|integer|max:10',
-        ]);
-
-        if ($this->modoEdicao) {
-            Empresa::find($this->empresaId)->update([
-                'nome' => $this->nome,
-                'telefone' => $this->telefone,
-                'CEP' => $this->CEP,
-            ]);
-        } else {
-            Empresa::create([
-                'nome' => $this->nome,
-                'telefone' => $this->telefone,
-                'CEP' => $this->CEP,
-            ]);
-        }
-
-        $this->resetCampos();
-        $this->carregarEmpresas();
-    }
-
-    public function editar($id)
-    {
-        $empresa = Empresa::find($id);
-        $this->empresaId = $empresa->id;
-        $this->nome = $empresa->nome;
-        $this->telefone = $empresa->telefone;
-        $this->CEP = $empresa->CEP;
-        $this->modoEdicao = true;
-    }
-
-    public function excluir($id)
-    {
-        Empresa::destroy($id);
-        $this->carregarEmpresas();
-    }
-
-    public function resetCampos()
-    {
-        $this->empresaId = null;
-        $this->nome = '';
-        $this->telefone = '';
-        $this->CEP = '';
-        $this->modoEdicao = false;
-    }
+    protected $rules = [
+        'nome' => 'required|min:3',
+        'estado' => 'required',
+        'status' => 'required|in:ativo,inativo',
+        'cep' => 'required|min:8'
+    ];
 
     public function render()
     {
-        return view('livewire.admin.enercon.empresa.empresa-component');
+        $empresas = Empresa::where('nome', 'like', '%' . $this->search . '%')
+            ->orWhere('estado', 'like', '%' . $this->search . '%')
+            ->paginate(10);
+
+        return view('livewire.admin.enercon.empresa.empresa-component', compact('empresas'));
+    }
+
+    public function create()
+    {
+        $this->resetInputFields();
+        $this->openModal();
+    }
+
+    public function openModal()
+    {
+        $this->isOpen = true;
+        $this->isView = false;
+    }
+
+    public function closeModal()
+    {
+        $this->isOpen = false;
+        $this->isView = false;
+    }
+
+    private function resetInputFields()
+    {
+        $this->empresaId = null;
+        $this->nome = '';
+        $this->estado = '';
+        $this->status = 'ativo';
+        $this->cep ='';
+    }
+
+    public function store()
+    {
+        $this->validate();
+
+        Cidade::updateOrCreate(['id' => $this->empresaId], [
+            'nome' => $this->nome,
+            'estado' => $this->estado,
+            'status' => $this->status,
+            'cep' =>$this->cep
+        ]);
+
+        session()->flash('message',
+            $this->empresaId ? 'Empresa atualizada com sucesso.' : 'Empresa criada com sucesso.');
+
+        $this->closeModal();
+        $this->resetInputFields();
+    }
+
+    public function edit($id)
+    {
+        $empresa = Empresa::findOrFail($id);
+        $this->empresaId = $id;
+        $this->nome = $empresa->nome;
+        $this->estado = $empresa->estado;
+        $this->status = $empresa->status;
+        $this->cep = $empresa->cep;
+
+        $this->openModal();
+    }
+
+    public function view($id)
+    {
+        $empresa = Empresa::findOrFail($id);
+        $this->empresaId = $id;
+        $this->nome = $empresa->nome;
+        $this->estado = $empresa->estado;
+        $this->status = $empresa->status;
+        $this->cep = $empresa->cep;
+
+        $this->isOpen = true;
+        $this->isView = true;
+    }
+
+    public function delete($id)
+    {
+        Empresa::find($id)->delete();
+        session()->flash('message', 'Empresa deletada com sucesso.');
     }
 }

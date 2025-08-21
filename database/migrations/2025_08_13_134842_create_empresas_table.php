@@ -6,17 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+  public function up(): void
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('nome');
-            $table->string('telefone')->nullable();
-            $table->integer('CEP');
+            $table->string('estado');
+            $table->enum('status', ['ativo', 'inativo'])->default('ativo');
+            $table->integer('cep');
+            $table->timestamps();
         });
     }
 
