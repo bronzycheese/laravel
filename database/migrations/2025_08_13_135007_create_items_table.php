@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->id('servicoId');
+            $table->id('faseId');
+            $table->string('item');
+            $table->string('referencial');
+            $table->text('descricao');
+            $table->string('unidade');
+            $table->integer('quantidade');
+            $table->integer('precoUnitarioComBdi');
+            $table->integer('precoTotalComBdi');
+            $table->integer('precoUnitarioSemBdi');
+            $table->integer('precoTotalSemBdi');
+            $table->integer('precoTotalFase');
+            $table->string('notaTecnica')->nullable();
             $table->timestamps();
         });
     }
