@@ -7,6 +7,9 @@ use App\Livewire\MunicipioComponent;
 Route::get('/dashboard', function () {
     return view('admin.enercon.app.dashboard.index');
 });
+Route::get('/fases', function () {
+    return view('fases.index');
+})->name('fases');
 Route::get('/empresas', function () {
     return view('empresas.index');
 })->name('empresas');
