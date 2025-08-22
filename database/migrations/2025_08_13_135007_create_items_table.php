@@ -13,19 +13,21 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->id('servicoId');
-            $table->id('faseId');
-            $table->string('item');
-            $table->string('referencial');
-            $table->text('descricao');
-            $table->string('unidade');
-            $table->integer('quantidade');
-            $table->integer('precoUnitarioComBdi');
-            $table->integer('precoTotalComBdi');
-            $table->integer('precoUnitarioSemBdi');
-            $table->integer('precoTotalSemBdi');
-            $table->integer('precoTotalFase');
-            $table->string('notaTecnica')->nullable();
+            $table->integer('servico_id')->index()->nullable();
+            $table->integer('fase_id')->index()->nullable();
+            $table->string('item')->nullable();
+            $table->string('codigo')->nullable();
+            $table->string('serv')->nullable();
+            $table->string('referencial')->nullable();
+            $table->text('descricao')->nullable();
+            $table->string('dmt')->nullable();
+            $table->string('unidade')->nullable();
+            $table->integer('quantidade')->nullable();
+            $table->decimal('preco_unitario_sem_boi')->defalt('0.00');
+            $table->decimal('preco_total_sem_boi')->defalt('0.00');
+            $table->decimal('preco_unitario_com_boi')->defalt('0.00');
+            $table->decimal('preco_total_com_boi')->defalt('0.00');
+            $table->text('nota_tecnica')->nullable();
             $table->timestamps();
         });
     }
