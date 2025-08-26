@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('fases', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero');
+            $table->integer('obra_id')->index()->nullable();
+            $table->string('numero')->nullable();
+            $table->string('nome')->nullable();
             $table->timestamps();
         });
     }
