@@ -9,3 +9,18 @@ git push -u origin main
 git remote add origin https://github.com/bronzycheese/laravel.git
 git branch -M main
 git push -u origin main
+
+
+
+git branch -a *********Mostra todas as branches existentes no repositório:
+git checkout -b wagner *****Cria uma nova branch chamada wagner a partir da branch atual e já faz o checkout
+git push -u origin wagner *********Envia a branch wagner para o repositório remoto (origin).
+
+git checkout -b wagner *****Cria uma nova branch chamada wagner a partir da branch atual e já faz o checkout
+git push -u origin wagner *********Envia a branch wagner para o repositório remoto (origin).
+
+git checkout main ou git switch main **************Voltar para a branch principal (main)
+git pull origin main //Atualize a main (garante que está igual ao remoto)
+git merge wagner //Faça o merge da wagner dentro da main
+
+git merge main --no-edit

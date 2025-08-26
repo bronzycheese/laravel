@@ -46,3 +46,20 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/enercon', function () {
+    // Verifica se o usuário está autenticado
+    if (auth()->check()) {
+        // return view('admin.cubo.contrato.wizard.index_contrato');
+        return view('admin.app.layouts.app');
+    }
+    
+    return view('livewire.auth.login'); // Usuário não logado
+    
+});
+
+
+Route::get('/', function () {
+    return view('admin.app.layouts.app');
+})->name('enercon');
