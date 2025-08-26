@@ -13,8 +13,18 @@ return new class extends Migration
     {
         Schema::create('cidades', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('estado');
+            
+            $table->string('nome')->nullable();
+            $table->string('slug')->nullable();
+            $table->char('estado', 2)->nullable();            
+            $table->string('nome_banco_dados')->nullable();
+            $table->string('brasao')->nullable();
+            $table->string('logo_prefeitura')->nullable();
+            $table->string('cor_principal')->default('#fbbf24');
+            $table->string('telefone_prefeitura')->nullable();
+            $table->string('email_ouvidoria')->nullable();
+            $table->string('site')->nullable();
+
             $table->enum('status', ['ativo', 'inativo'])->default('ativo');
             $table->timestamps();
         });

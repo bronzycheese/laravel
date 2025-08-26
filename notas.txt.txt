@@ -24,3 +24,5 @@ git pull origin main //Atualize a main (garante que está igual ao remoto)
 git merge wagner //Faça o merge da wagner dentro da main
 
 git merge main --no-edit
+
+git merge wagner --no-edit

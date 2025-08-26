@@ -12,6 +12,11 @@
             <!-- Configurações Section -->
             <livewire:admin.app.configuracao.configuracao-component />
 
+              <!-- Empresas Section -->
+              <livewire:admin.app.empresa.empresa-component />
+
+              <livewire:admin.app.cidade.cidade-component />
+
 
 
 

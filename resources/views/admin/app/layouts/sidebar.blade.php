@@ -29,6 +29,11 @@
                                 <span>Empresas</span>
                             </a>   
                             
+                            <a class="nav-link" href="#cidades" data-section="cidades">
+                                <i class="bi bi-file-text"></i>
+                                <span>Cidades</span>
+                            </a>   
+
                             <a class="nav-link" href="#municipios" data-section="municipios">
                                 <i class="bi bi-file-text"></i>
                                 <span>Municipios</span>
