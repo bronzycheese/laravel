@@ -8,7 +8,7 @@ Route::get('/dashboard', function () {
     return view('admin.enercon.app.dashboard.index');
 });
 Route::get('/situacoes', function () {
-    return view('situacoes.index');
+    return view('admin.enercon.obras.situacoes.index');
 })->name('situacoes');
 Route::get('/fases', function () {
     return view('fases.index');

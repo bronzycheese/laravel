@@ -1,27 +1,21 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+
+return new class extends Migration {
     public function up(): void
     {
-        Schema::create('situacaos', function (Blueprint $table) {
+        Schema::create('situacoes', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+             $table->enum('status', ['ativo', 'inativo'])->default('ativo');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('situacaos');
+        Schema::dropIfExists('situacoes');
     }
 };

@@ -3,7 +3,7 @@
 namespace App\Livewire\Admin\Enercon\Situacao;
 
 use Livewire\Component;
-use App\Models\Admin\Enercon\Situacao;
+use App\Models\Admin\Enercon\Obra\Situacao;
 use Livewire\WithPagination;
 
 
@@ -27,7 +27,7 @@ class SituacaoComponent extends Component
 
     public function render()
     {
-        $situacoes = Situacoes::where('nome', 'like', '%' . $this->search . '%')
+        $situacoes = Situacao::where('nome', 'like', '%' . $this->search . '%')
             ->paginate(10);
 
         return view('livewire.admin.enercon.situacao.situacao-component', compact('situacoes'));
