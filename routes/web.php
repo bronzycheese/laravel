@@ -7,6 +7,9 @@ use App\Livewire\MunicipioComponent;
 Route::get('/dashboard', function () {
     return view('admin.enercon.app.dashboard.index');
 });
+Route::get('/situacoes', function () {
+    return view('situacoes.index');
+})->name('situacoes');
 Route::get('/fases', function () {
     return view('fases.index');
 })->name('fases');
@@ -54,9 +57,9 @@ Route::get('/enercon', function () {
         // return view('admin.cubo.contrato.wizard.index_contrato');
         return view('admin.app.layouts.app');
     }
-    
+
     return view('livewire.auth.login'); // Usuário não logado
-    
+
 });
 
 

@@ -14,7 +14,7 @@ return new class extends Migration {
         Schema::create('situacoes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->boolean('status')->default(true);
+             $table->enum('status', ['ativo', 'inativo'])->default('ativo');
             $table->timestamps();
         });
     }
