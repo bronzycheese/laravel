@@ -1,4 +1,4 @@
-<div>
+<div class="content-section d-none" id="tiposUnidades-section" wire:ignore.self>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
